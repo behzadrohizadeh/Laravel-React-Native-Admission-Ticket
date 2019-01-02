@@ -15,8 +15,8 @@ class CreateAdmissionHistoryTable extends Migration
     {
         Schema::create('admission_history', function (Blueprint $table) {
             $table->bigIncrements('id_history')->bigInteger();
-            $table->integer('type');
-            $table->string('id_gate');
+            $table->string('type');
+            //$table->string('id_gate');
             $table->string('date_create');
             $table->integer('id_admission'); 
             $table->integer('id_ticket'); 

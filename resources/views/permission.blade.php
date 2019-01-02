@@ -25,7 +25,7 @@
                <div class="alert alert-danger">
                           
                  <h1>404</h1>   
-                 <h2>شما مجوز دسترسی به این برگه رو ندارید </h2>    
+                 <h2>Permission Access To This Page Denied</h2>    
                 </div>
             </div>
         </div>

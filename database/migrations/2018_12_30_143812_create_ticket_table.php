@@ -23,7 +23,7 @@ class CreateTicketTable extends Migration
             $table->string('date_create');
             $table->integer('times_used')->default(0); 
             $table->integer('limit');
-            $table->boolean('active')->default(0);
+            $table->boolean('active')->default(1);
         });
     }
 

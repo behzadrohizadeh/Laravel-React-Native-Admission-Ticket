@@ -21,7 +21,7 @@ class CreateAdmissionTable extends Migration
             $table->string('active_key');
             $table->string('date_create');
             $table->string('mobile')->unique();
-            $table->boolean('active')->default(0);
+            $table->boolean('active')->default(1);
         });
     }
 
