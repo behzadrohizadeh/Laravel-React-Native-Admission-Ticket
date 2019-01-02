@@ -110,6 +110,12 @@ class UserController extends Controller
        return response()->json($res);
     }
 
+    if ($ticket->state==$in_or_out ) {
+       $res["error"] = "Ticket It is Currently [".$in_or_out."] ";
+       $res["status"] = 201;
+       return response()->json($res);
+    }
+
 
       $History= new History();
       $History->type=$in_or_out ; 
@@ -118,8 +124,10 @@ class UserController extends Controller
       $History->id_ticket= $ticket->id_ticket; 
       $History->save(); 
 
-
+      $ticket_data["state"]= $in_or_out;
+     if ($in_or_out=="inside") {
       $ticket_data["times_used"]= intval($ticket->times_used)+1;
+     }
       Ticket::where('id_ticket', $ticket->id_ticket)
           ->update($ticket_data);
 

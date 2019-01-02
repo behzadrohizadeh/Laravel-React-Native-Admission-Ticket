@@ -59,6 +59,8 @@ Route::get('/ticket/index', 'Admin\Tickets@index');
 Route::get('/ticket/addticket', 'Admin\Tickets@create');
 Route::get('/ticket/edit/{id}', 'Admin\Tickets@edit');
 Route::get('/ticket/import', 'Admin\Tickets@import');
+Route::get('/ticket/moreinfo/{id}', 'Admin\Tickets@moreinfo');
+
 
 //posts
 

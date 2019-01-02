@@ -24,6 +24,7 @@ class CreateTicketTable extends Migration
             $table->integer('times_used')->default(0); 
             $table->integer('limit');
             $table->boolean('active')->default(1);
+            $table->string('state')->default("outside");
         });
     }
 

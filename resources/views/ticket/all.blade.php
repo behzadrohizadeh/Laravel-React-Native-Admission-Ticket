@@ -79,6 +79,7 @@
                         <td>
                           <a class="btn btn-warning btn-xs" href="<?php  echo '/ticket/edit/'.$value->id_ticket; ?>">Edit</a>
                           <button data-toggle="id_ticket-<?php echo $value->id_ticket;?>" class="btn btn-danger btn-xs delete" data-title="Delete" data-toggle="modal" data-target="#delete" ><i class="fa fa-trash" aria-hidden="true"></i></button>
+                          <a class="btn btn-info btn-xs" href="<?php  echo '/ticket/moreinfo/'.$value->id_ticket; ?>">Info</a>
                        </tr>
                   <?php $i++;}?>
            </tbody>

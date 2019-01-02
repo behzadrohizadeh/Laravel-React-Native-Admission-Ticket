@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Ticket;
 use Rap2hpoutre\FastExcel\FastExcel;
+use App\History;
 
 use View;
 class Tickets extends Controller
@@ -207,7 +208,7 @@ class Tickets extends Controller
     }
    function getwhere($id)
     {
-        $ticket = ticket::where('id_ticket', $id)
+        $ticket = Ticket::where('id_ticket', $id)
                                 ->get(); 
         return $ticket;                          
     }
@@ -215,7 +216,7 @@ class Tickets extends Controller
     public function edit($id)
     {
          $res["title"]="Ticket Edit ";
-       $ticket=$this->getwhere($id);
+         $ticket=$this->getwhere($id);
         if (!empty($ticket)) {
 
             $res["ticket"]=$ticket[0];
@@ -297,6 +298,20 @@ class Tickets extends Controller
         
         
        }  
+
+       function moreinfo($id=0) 
+       {
+         $ticket=$this->getwhere($id);
+         $data["ticket"]= $ticket;
+         $data["history"]= History::
+          leftJoin("admission","admission_history.id_admission","admission.id_admission")
+         ->where("admission_history.id_ticket",$id)
+         ->select("admission.name","admission_history.date_create","admission_history.type")
+         ->get();
+
+         $data["title"]="More Info Ticket";
+         return view('ticket.moreinfo',$data);
+       }
 
 
        function import()
