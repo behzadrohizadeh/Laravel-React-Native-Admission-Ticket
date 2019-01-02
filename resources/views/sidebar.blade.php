@@ -49,6 +49,7 @@
                 <ul>
                   <li><a href="/ticket"> All </a></li>
                   <li><a href="/ticket/addticket">New Ticket</a></li>
+                  <li><a href="/ticket/import">Import</a></li>
                 </ul>
 
         </li>

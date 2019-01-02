@@ -62,7 +62,14 @@
                          <td ><?php echo $value->valid_from;?></td>
                          <td ><?php echo $value->valid_to;?></td>
                          <td ><?php echo $value->ticket_type;?></td>
-                         <td ><?php echo $value->limit;?></td>
+                         <td ><?php
+
+                         if ($value->ticket_type=="limit") {
+                         
+                          echo $value->limit;
+                        }else{echo "unlimit";}
+
+                          ?></td>
                          <td ><?php echo $value->times_used;?></td>
 
                        

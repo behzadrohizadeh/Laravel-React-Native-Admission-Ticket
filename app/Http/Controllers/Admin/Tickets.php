@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Ticket;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 use View;
 class Tickets extends Controller
@@ -295,7 +296,108 @@ class Tickets extends Controller
           }
         
         
-       }   
+       }  
+
+
+       function import()
+       {
+        $data["title"]="Import Tickets";
+         return view('ticket.import',$data);
+       } 
+
+       function importer(Request $request)
+       {
+        $file = $request->file('xlsxfile');
+        $destinationPath = 'xlsx';
+        $file_name=uniqid().".".$file->getClientOriginalExtension();
+        $move=$file->move($destinationPath,$file_name);
+        $filePath= $destinationPath.'/'.$file_name;
+        $filePath = public_path($filePath);
+        $filePath = str_replace("allapps/public/", "",  $filePath) ;
+        $error=""; 
+        $s= 0 ;
+        $row= 1; 
+        
+        $ticket = new Ticket;
+        $collection = (new FastExcel)->import($filePath);
+        foreach ( $collection as $key => $value) {
+        $e=0;
+        $key = array_keys($value);
+        $ticket->ticket_name=trim( $value[$key[0] ]) ; 
+        $ticket->ticket_code=trim( $value[$key[1] ]) ;
+        $ticket->ticket_type=trim( $value[$key[4] ]) ; 
+
+         $valid_from= (is_object($value[$key[2] ])) ? (array) $value[$key[2] ] : $value[$key[2] ] ; 
+         $valid_to= (is_object($value[$key[2] ])) ? (array) $value[$key[3] ] : $value[$key[3] ] ;  
+
+          $valid_from=(is_array($valid_from)) ? strtotime( $valid_from["date"]): strtotime($valid_from);
+          $valid_to=(is_array($valid_to)) ? strtotime( $valid_to["date"]): strtotime($valid_to);
+          $ticket->date_create=date("Y-m-d"); 
+          $ticket->times_used= 0; 
+          $ticket->limit= intval( $value[$key[5] ]) ;
+          $ticket->valid_from=date("Y-m-d",$valid_from);
+          $ticket->valid_to= date("Y-m-d",$valid_to);
+
+
+           if ( ($valid_from > $valid_to) || $valid_from==0 || $valid_to==0) {
+           $e=1;
+           $error.="Row=". $row.":Valid To must be longer than Valid From <br/>";
+         }
+
+         if (empty( $ticket->ticket_code)) {
+           $e=1;
+           $error.="Row=". $row.":Ticket Code Is Empty<br/>";
+         }
+
+        
+          switch ($ticket->ticket_type) {
+            case 'limit':
+
+              if (intval($ticket->limit) <= 0 ) {
+               $e=1;
+               $error="Row=". $row.":limit must be longer than 0 <br/>";
+             }
+                
+
+              break;
+
+              case 'unlimit':
+              # code...
+              break;
+
+              default:
+
+              $e=1;
+              $error="Row=". $row.":Ticket Type  must be unlimit or limit <br/>";
+
+              break ; 
+            
+            
+          }
+
+          
+       
+
+       $isin = Ticket::where('ticket_code', $ticket->ticket_code)->count();
+        if ( $isin==1) {
+          $e=1; 
+          $error.="Row=". $row.":Ticket Code [".$ticket->ticket_code."] Exists.<br/>";
+
+        }elseif ($e==0 && $isin==0) 
+        {
+          $s++;
+          $ticket->save(); 
+
+        }
+
+        $row++;
+       
+       }
+        $data["success"]=$s." Ticket Added Susscessfuly";
+        $data["title"]="Import Tickets";
+        $data["error"]=$error;
+        return view('ticket.import',$data);
+     }
 
    
 }

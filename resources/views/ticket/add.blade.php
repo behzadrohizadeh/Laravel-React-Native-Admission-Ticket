@@ -72,7 +72,7 @@
 						     
 						</div>
 
-						<div class="form-group"><br/>
+						<div class="form-group" id="limit"><br/>
 							 <p> Limit </p>
 						     <input name="limit" value="1"  type="number" min="1" class="form-control min_limit" >
 						</div>
@@ -93,5 +93,26 @@
 	    </div>
 	</div>
 </main>
+
+<script type="text/javascript">
+jQuery(document).ready( function($) {
+
+	$('body').on('change','select',function(){
+
+		val = $(this).val(); 
+		if (val=="unlimit") 
+		{
+          $("#limit").hide(); 
+		}else
+
+		{
+           $("#limit").show(); 
+		}
+
+	});
+
+	
+});	
+</script>
 
 @stop

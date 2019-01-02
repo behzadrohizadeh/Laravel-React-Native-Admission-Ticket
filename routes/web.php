@@ -58,6 +58,7 @@ Route::get('/ticket/index/{id}', 'Admin\Tickets@index');
 Route::get('/ticket/index', 'Admin\Tickets@index');
 Route::get('/ticket/addticket', 'Admin\Tickets@create');
 Route::get('/ticket/edit/{id}', 'Admin\Tickets@edit');
+Route::get('/ticket/import', 'Admin\Tickets@import');
 
 //posts
 
@@ -85,4 +86,7 @@ Route::post('/admission/update/{id}', 'Admin\Admissions@update');
 
 Route::post('/ticket/store', 'Admin\Tickets@store');
 Route::post('/ticket/update/{id}', 'Admin\Tickets@update');
+Route::post('/ticket/importer', 'Admin\Tickets@importer');
+
+
 });

@@ -67,16 +67,18 @@
 							 <select name="ticket_type" class="form-control">
 
 						     	<option <?php if($ticket->ticket_type=="limit"){echo "selected";} ?> value="limit">Limit</option>
-						     	<option <?php if($ticket->ticket_type=="unlimit"){echo "selected";} ?> value="unLimit">Unlimit</option>
+						     	<option <?php if($ticket->ticket_type=="unlimit"){echo "selected";} ?> value="unlimit">Unlimit</option>
 						     </select>
 						     
 						</div>
 
-						<div class="form-group"><br/>
+							
+						<div class="form-group" id="limit">
+							<br/>
 							 <p> Limit </p>
 						     <input name="limit" value="<?php echo $ticket->limit ?>"  type="number" min="1" class="form-control min_limit" >
 						</div>
-						
+						 
 						
 						
 						
@@ -93,4 +95,35 @@
 	    </div>
 	</div>
 </main>
+
+<script type="text/javascript">
+jQuery(document).ready( function($) {
+
+	 var vallimit ="<?php echo $ticket->ticket_type ?>"; 
+		if (vallimit=="unlimit") 
+		{
+          $("#limit").hide(); 
+		}else
+
+		{
+           $("#limit").show(); 
+		}
+
+	$('body').on('change','select',function(){
+
+		var val = $(this).val(); 
+		if (val=="unlimit") 
+		{
+          $("#limit").hide(); 
+		}else
+
+		{
+           $("#limit").show(); 
+		}
+
+	});
+
+	
+});	
+</script>
 @stop
