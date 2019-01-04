@@ -18,6 +18,7 @@ Route::group(array('prefix' => 'v1'), function () {
   
   Route::post('/login', 'Api\UserController@login')->middleware('token');
   Route::post('/checkticket', 'Api\UserController@checkticket')->middleware('token');
+  Route::post('/currentstate', 'Api\UserController@currentstate')->middleware('token');
 
   
 

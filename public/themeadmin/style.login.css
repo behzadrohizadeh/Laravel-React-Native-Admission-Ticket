@@ -127,7 +127,7 @@ html
 }
 .lcc img
 {
-	margin:auto;
+	width: 150px;
 }
 .login-form input[type="submit"]
 {

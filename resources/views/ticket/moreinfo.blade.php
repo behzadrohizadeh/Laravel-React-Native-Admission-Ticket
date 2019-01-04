@@ -79,14 +79,14 @@
               <thead style="background:#2196F3;">
                 <th>Row</th>
                 <th>Admission</th>
-                <th>Date Create</th>
+                <th>Date Admission</th>
                 <th>Type</th>
                
               <thead>
               <tfoot style="background:#2196F3;">
                 <th>Row</th>
                 <th>Admission</th>
-                <th>Date Create</th>
+                <th>Date Admission</th>
                 <th>Type</th>
               </tfoot>
               <tbody>

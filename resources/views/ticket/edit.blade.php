@@ -52,6 +52,18 @@
 						</div>
 
 						<div class="form-group"><br/>
+							 <p> Qr Code </p>
+						     <?php 
+						     $ticket_id = $ticket->ticket_code ; 
+						     $path= public_path(); 
+						     //$path = "/home/concert/domains/concertino.ir/public_html"; 
+						     QrCode::format('png')->size(200)->generate($ticket_id, $path.'/qrcodes/'.$ticket_id.'.png');
+                                
+                         ?>
+                           <img src="<?php echo URL('/').'/qrcodes/'.$ticket_id.'.png'; ?>">
+						</div>
+
+						<div class="form-group"><br/>
 							 <p> Valid From </p>
 						     <input name="valid_from" type="date" class="form-control" value="<?php echo $ticket->valid_from ?>">
 						</div>

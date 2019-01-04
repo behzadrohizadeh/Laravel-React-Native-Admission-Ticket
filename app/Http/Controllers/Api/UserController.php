@@ -125,6 +125,7 @@ class UserController extends Controller
       $History->save(); 
 
       $ticket_data["state"]= $in_or_out;
+      $ticket_data["date_update"]= date("Y-m-d");;
      if ($in_or_out=="inside") {
       $ticket_data["times_used"]= intval($ticket->times_used)+1;
      }
@@ -138,6 +139,16 @@ class UserController extends Controller
      $res["status"] = 200;
      return response()->json($res);
 
+  }
+
+  function currentstate(Request $request)
+  {
+
+    $date= date("Y-m-d");
+    $res["outside"] = Ticket::where('date_update', $date)->where("state","outside")->count();
+    $res["inside"] = Ticket::where('date_update', $date)->where("state","inside")->count();
+    $res["status"] = 200;
+    return response()->json($res);
   }
 }
 
