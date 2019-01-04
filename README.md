@@ -1,6 +1,11 @@
 # Laravel-React-Native-Admission-Ticket
 A Laravel And React Native Ticket admission
 
+# Required :
+1. Composer 
+2. Php Server 
+3. Database
+4. Laravel 
 # Install 
 After Download Source Files Go To Your  Path In Command Prompt  And Run : 
 ### composer update
