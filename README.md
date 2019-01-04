@@ -6,8 +6,8 @@ After Download Source Files Go To Your  Path In Command Prompt  And Run :
 ### composer update
 
 # Install Database : 
-Go To Path Project Folder under $path/config/database.php inser database info 
-## run in Cmd : 
+Go To Path Project Folder under $path/config/database.php insert database info 
+### Run Command   : 
 php artisan migrate
 
 ## Run Server Project : 
