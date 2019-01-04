@@ -1,6 +1,7 @@
 # Laravel-React-Native-Admission-Ticket
-A Laravel And React Native Ticket admission
-
+A Laravel And React Native Ticket admission 
+You Can Admission Tickets In Android & iOS Aplication 
+By Code And Qr Scanner
 # Required :
 1. Composer 
 2. Php Server 
