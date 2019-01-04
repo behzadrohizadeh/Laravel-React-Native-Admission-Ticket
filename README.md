@@ -16,6 +16,6 @@ php artisan serve
 Open Browser And Got To http://localhoost:8000
 Login And Create Area , Gate , Admission ,Ticket
 
-![alt text](https://pasteboard.co/HUWX8n4.png "Login Page")
-![alt text](https://pasteboard.co/HUWXfTh.png "Dashboard Page")
+![alt text](https://cdn.pbrd.co/images/HUWX8n4.png "Login Page")
+![alt text](https://cdn.pbrd.co/images/HUWXfTh.png "Dashboard Page")
 
