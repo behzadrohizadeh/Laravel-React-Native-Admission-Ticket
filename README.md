@@ -24,3 +24,6 @@ Login And Create Area , Gate , Admission ,Ticket
 ![alt text](https://cdn.pbrd.co/images/HUWX8n4.png "Login Page")
 ![alt text](https://cdn.pbrd.co/images/HUWXfTh.png "Dashboard Page")
 
+# Client Side
+## ios & android 
+https://github.com/behzadrohizadeh/React-Native-Admission-Ticket-App
