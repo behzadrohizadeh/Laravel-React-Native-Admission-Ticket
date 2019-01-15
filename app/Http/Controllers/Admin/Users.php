@@ -255,7 +255,7 @@ class Users extends Controller
          $datauser["mobile"]= $request->input("mobile");
          $datauser["id_role"]= $request->input("id_role");
          $datauser["active"]= 1;
-         $datauser["active_key"]= md5(time()*7);
+        // $datauser["active_key"]= md5(time()*7);
          $datauser["date_create"]=date("Y-m-d");
          if(!empty($_FILES['avatar']["name"]) ) 
           {

@@ -56,7 +56,7 @@
 						    </div>
 						    <div class="col-lg-6">
 							     <?php 
-							      if(!empty($user->avatar)){ ?>
+							      if(!empty($admission->avatar)){ ?>
 							        <img width="100" src="<?php echo $admission->avatar;?>">
 							     <?php }?>
 			                </div>

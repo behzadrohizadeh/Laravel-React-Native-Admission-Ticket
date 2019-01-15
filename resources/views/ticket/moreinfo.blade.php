@@ -13,7 +13,10 @@
     <div class="main-padding">
       <div class="col-xs-12">
         <div class="main-box">
-          <div class="table-responsive"> 
+          <div class="table-responsive">
+
+            <img   src="<?php echo URL('/').'/qrcodes/'.$ticket[0]->ticket_code.'.png'; ?>" />
+ 
 
 
            <table id="mytable" class="table table-bordred table-striped table-hover alldata" data-toggle="ticket">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Ticket;
 use Rap2hpoutre\FastExcel\FastExcel;
 use App\History;
+use SimpleSoftwareIO\QrCode\BaconQrCodeGenerator;
 
 use View;
 class Tickets extends Controller
@@ -46,6 +47,9 @@ class Tickets extends Controller
      */
     public function create()
     {    
+
+
+
          $data["title"]="New Ticket";
          return view('ticket.add',$data);
     }
@@ -190,6 +194,13 @@ class Tickets extends Controller
            $ticket->times_used= 0 ; 
            $ticket->active= 1 ; 
            $in= $ticket->save();
+
+
+            $qrcode = new BaconQrCodeGenerator;
+            $qrcodes=$ticket_code;
+            $qrcode->format('png')->size(200)->generate($qrcodes, './qrcodes/'.$qrcodes.'.png');
+
+
           
            $res["success"]="Ticket Create Susscessfuly";
            $res["title"]="New ticket ";
@@ -400,6 +411,12 @@ class Tickets extends Controller
 
         }elseif ($e==0 && $isin==0) 
         {
+
+          $qrcode = new BaconQrCodeGenerator;
+            $qrcodes=$ticket->ticket_code;
+            $qrcode->format('png')->size(200)->generate($qrcodes, './qrcodes/'.$qrcodes.'.png');
+
+            
           $s++;
           $ticket->save(); 
 
